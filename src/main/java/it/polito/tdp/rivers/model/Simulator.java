@@ -78,7 +78,13 @@ public class Simulator {
 	private void processEvent(Event e) {
 		double fin = e.getFlow().getFlow();
 		double fout = 0.00;
-		if(this.capacita<=this.capienzaTot) {
+		if(this.capacita>this.capienzaTot) {
+			//tracimazione
+			this.capacitaMedia+=this.capacita;
+			this.numGiorni++;
+			this.count++;
+		}
+		else {
 			Random random = new Random();
 			float prob = random.nextFloat();
 			if(prob<this.probabilita) {
@@ -91,18 +97,13 @@ public class Simulator {
 				this.count++;
 			}
 			else if (fin<this.flowMin) {
+				//differenza 
 				this.capacita-=(this.flowMin-fin);
-				//diff 
+				
 				this.capacitaMedia+=this.capacita;
 				this.count++;
 				this.numGiorni++;
 			}
-		}
-		else {
-			//tracimazione
-			this.capacitaMedia+=this.capacita;
-			this.numGiorni++;
-			this.count++;
 		}
 		
 	}
