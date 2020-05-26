@@ -78,4 +78,12 @@ public class River {
 			return false;
 		return true;
 	}
+
+	public String getFirstDate() {
+		return this.flows.get(0).getDay().toString();
+	}
+
+	public String getEndDate() {
+		return this.flows.get(flows.size()-1).getDay().toString();
+	}
 }
