@@ -84,13 +84,15 @@ public class Simulator {
 			if(prob<this.probabilita) {
 				fout = 10*this.flowMin;
 			}
-			if(fin>=fout) {
+			if(fin>=this.flowMin) {
 				this.capacita+=(fin-fout);
+				//sum C in excess
 				this.capacitaMedia+=this.capacita;
 				this.count++;
 			}
 			else if (fin<this.flowMin) {
 				this.capacita-=(this.flowMin-fin);
+				//diff 
 				this.capacitaMedia+=this.capacita;
 				this.count++;
 				this.numGiorni++;
@@ -100,6 +102,7 @@ public class Simulator {
 			//tracimazione
 			this.capacitaMedia+=this.capacita;
 			this.numGiorni++;
+			this.count++;
 		}
 		
 	}
